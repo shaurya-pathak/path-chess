@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Box, VStack, Heading, Container, Text, Link as ChakraLink, useColorModeValue, IconButton } from '@chakra-ui/react';
+import { Box, VStack, Heading, Container, Text, Link as ChakraLink, useColorModeValue} from '@chakra-ui/react';
 import { FaChessKnight } from 'react-icons/fa'; // FontAwesome chess knight icon
 import PlayAI from './pages/PlayAI';
 import Overview from './pages/Overview';

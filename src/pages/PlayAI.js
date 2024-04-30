@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Chessboard from 'chessboardjsx';
 import { Chess } from 'chess.js';
 import { Box, Heading, Button, Alert, AlertIcon, AlertTitle, AlertDescription, Spinner } from '@chakra-ui/react';
@@ -58,30 +58,32 @@ function PlayAI() {
     setGameStarted(false); // Sets the game as not started
   };
 
-  const makeAIMove = async () => {
-    setIsAiThinking(true); // Start spinner
-    const currentFen = game.fen();
-    const newHistory = [...history, currentFen].slice(-4); // Keep the last 4 FENs
-    if (newHistory.length < 4) {
-      while (newHistory.length < 4) {
-        newHistory.unshift("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+  // Inside your component
+  const makeAIMove = useCallback(async () => {
+      setIsAiThinking(true); // Start spinner
+      const currentFen = game.fen();
+      const newHistory = [...history, currentFen].slice(-4); // Keep the last 4 FENs
+      if (newHistory.length < 4) {
+        while (newHistory.length < 4) {
+          newHistory.unshift("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        }
       }
-    }
 
-    try {
-      const response = await axios.post('https://adapting-known-martin.ngrok-free.app/evaluate_move', {
-        fen_strings: newHistory
-      });
-      const bestMove = response.data.best_move;
-      game.move(bestMove, { sloppy: true });
-      setFen(game.fen());
-      setIsCheckmate(game.isCheckmate());
-      setHistory(newHistory);
-    } catch (error) {
-      console.error('Error fetching AI move:', error);
-    }
-    setIsAiThinking(false); // Stop spinner
-};
+      try {
+        const response = await axios.post('https://adapting-known-martin.ngrok-free.app/evaluate_move', {
+          fen_strings: newHistory
+        });
+        const bestMove = response.data.best_move;
+        game.move(bestMove, { sloppy: true });
+        setFen(game.fen());
+        setIsCheckmate(game.isCheckmate());
+        setHistory(newHistory);
+      } catch (error) {
+        console.error('Error fetching AI move:', error);
+      }
+      setIsAiThinking(false); // Stop spinner
+  }, [game, history, setIsAiThinking, setFen, setIsCheckmate, setHistory]); // Dependency array
+
 
 const checkApiAvailability = async () => {
   try {

@@ -99,12 +99,12 @@ useEffect(() => {
 }, []);  // Empty dependency array to ensure this only runs once on mount
 
 
-  useEffect(() => {
-    // Automatically make an AI move when it's AI's turn and the game has started
-    if (gameStarted && game.turn() !== playerColor[0]) {
-      makeAIMove();
-    }
-  }, [fen, gameStarted, playerColor]);  // Make sure playerColor is a dependency if it impacts AI behavior
+useEffect(() => {
+  // Automatically make an AI move when it's AI's turn and the game has started
+  if (gameStarted && game.turn() !== playerColor[0]) {
+    makeAIMove();
+  }
+}, [fen, gameStarted, playerColor, game, makeAIMove]); 
   
   
   

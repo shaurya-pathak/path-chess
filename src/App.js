@@ -20,8 +20,8 @@ function App() {
             </Heading>
             <Text fontSize="lg" color="teal.200" textAlign="center">
               <ChakraLink as={Link} to="/" p={2} _hover={{ bg: hoverBg }}>Play Against My AI</ChakraLink> |
-              <ChakraLink as={Link} to="/overview" p={2} _hover={{ bg: hoverBg }}>Overview</ChakraLink> |
-              <ChakraLink as={Link} to="/about" p={2} _hover={{ bg: hoverBg }}>About</ChakraLink>
+              <ChakraLink as={Link} to="/overview" p={2} _hover={{ bg: hoverBg }}>Overview</ChakraLink> 
+              {/* <ChakraLink as={Link} to="/about" p={2} _hover={{ bg: hoverBg }}>About</ChakraLink> */}
             </Text>
           </VStack>
         </Box>

@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Box, Heading, Text, Link } from '@chakra-ui/react';
+import modelImage from '../assets/model.png'; // Importing the image
+import architectureImage from '../assets/architecture.png'; // Importing the image
 
 function Overview() {
   useEffect(() => {
@@ -7,14 +9,12 @@ function Overview() {
       if (e.data && e.data.id === "11754313") {
         const iframe = document.getElementById(e.data.id);
         if (iframe) {
-          iframe.style.height = `${e.data.frameHeight + 30}px`; // Add 30px padding
+          iframe.style.height = `${e.data.frameHeight + 30}px`;
         }
       }
     }
 
     window.addEventListener("message", handleResizeMessage);
-
-    // Clean up the event listener
     return () => {
       window.removeEventListener("message", handleResizeMessage);
     };
@@ -24,12 +24,18 @@ function Overview() {
     <Box>
       <Heading as="h2" size="xl">Model Overview</Heading>
       <Text mt={4}>
-        This project is an implementation of a neural network-based chess engine inspired by DeepMind's AlphaZero, combining Monte Carlo Tree Search (MCTS) with deep learning to learn from self-play. The model is designed to understand and innovate on the core mechanics of a neural network-based chess engine.
+        This project is an implementation of a neural network-based chess engine inspired by DeepMind's AlphaZero, combining Monte Carlo Tree Search (MCTS) with deep learning to learn from self-play.
       </Text>
+      <Box mt={4}>
+        <img src={architectureImage} alt="System Architecture" style={{ width: '100%' }} />
+      </Box>
       <Text mt={4}>
         Features include a convolutional neural network (CNN) with residual and squeeze-and-excitation (SE) blocks, an enhanced MCTS for decision-making, and a self-play training loop to improve strategic depth over time.
       </Text>
       <Heading as="h3" size="lg" mt={4}>Model Architecture and Training</Heading>
+      <Box mt={4}>
+        <img src={modelImage} alt="Model Architecture" style={{ width: '100%' }} />
+      </Box>
       <Text mt={4}>
         The model utilizes TensorFlow and Keras, with layers designed to process multiple previous moves of the chess board, providing deep feature extraction and strategic insight. For more detailed information or to contribute, visit the <Link href="https://github.com/shaurya-pathak/path-chess-zero" isExternal>project repository on GitHub</Link>.
       </Text>

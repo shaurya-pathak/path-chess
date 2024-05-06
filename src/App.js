@@ -19,15 +19,15 @@ function App() {
               <FaChessKnight /> Path-Chess
             </Heading>
             <Text fontSize="lg" color="teal.200" textAlign="center">
-              <ChakraLink as={Link} to="/" p={2} _hover={{ bg: hoverBg }}>Play Against My AI</ChakraLink> |
-              <ChakraLink as={Link} to="/overview" p={2} _hover={{ bg: hoverBg }}>Overview</ChakraLink> 
+              <ChakraLink as={Link} to="/" p={2} _hover={{ bg: hoverBg }}>Overview</ChakraLink> |
+              <ChakraLink as={Link} to="/playAI" p={2} _hover={{ bg: hoverBg }}>Play my AI</ChakraLink> 
               {/* <ChakraLink as={Link} to="/about" p={2} _hover={{ bg: hoverBg }}>About</ChakraLink> */}
             </Text>
           </VStack>
         </Box>
         <Routes>
-          <Route path="/" element={<PlayAI />} />
-          <Route path="/overview" element={<Overview />} />
+          <Route path="/" element={<Overview />} />
+          <Route path="/playAI" element={<PlayAI />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </Container>

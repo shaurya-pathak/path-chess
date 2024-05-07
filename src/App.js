@@ -15,10 +15,10 @@ function App() {
       <Container maxW="container.md" pt={5}>
         <Box bg={navBg} p={4} borderRadius="lg" mb={6}>
           <VStack spacing={4} align="stretch">
-            <Heading size="xl" textAlign="center" color="teal.300">
+            <Heading size="xl" textAlign="center" color="teal.100">
               <FaChessKnight /> Path-Chess
             </Heading>
-            <Text fontSize="lg" color="teal.200" textAlign="center">
+            <Text fontSize="lg" color="teal.100" textAlign="center">
               <ChakraLink as={Link} to="/" p={2} _hover={{ bg: hoverBg }}>Overview</ChakraLink> |
               <ChakraLink as={Link} to="/playAI" p={2} _hover={{ bg: hoverBg }}>Play my AI</ChakraLink> 
               {/* <ChakraLink as={Link} to="/about" p={2} _hover={{ bg: hoverBg }}>About</ChakraLink> */}
